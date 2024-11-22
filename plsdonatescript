@@ -1,0 +1,35 @@
+local GUI = Instance.new("ScreenGui")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+
+GUI.Name = "Donate GUI"
+GUI.Parent = game.Players.LocalPlayer.PlayerGui
+
+TextLabel.Name = "Donate Text"
+TextLabel.Parent = GUI
+TextLabel.Text = "¡Introduce el nombre del jugador para donar!"
+TextLabel.TextColor3 = Color3.new(1, 1, 1)
+TextLabel.TextSize = 20
+TextLabel.BackgroundColor3 = Color3.new(0, 0, 0)
+TextLabel.BackgroundTransparency = 0.5
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Position = UDim2.new(0.5, -100, 0.5, -25)
+
+TextButton.Name = "Donate Button"
+TextButton.Parent = GUI
+TextButton.Text = "Donar"
+TextButton.TextColor3 = Color3.new(1, 1, 1)
+TextButton.TextSize = 20
+TextButton.BackgroundColor3 = Color3.new(0, 0.5, 0)
+TextButton.Size = UDim2.new(0, 200, 0, 50)
+TextButton.Position = UDim2.new(0.5, -100, 0.5, -25)
+
+TextButton.MouseButton1Click:Connect(function()
+    local nombre = TextLabel.Text -- Nombre del jugador
+    local donador = "Tu Nombre" -- Nombre del donador
+    game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Donate GUI").TextLabel.Text = "¡Donación realizada! ¡Gracias por donar a " .. nombre .. "!" -- Actualizar el texto de la etiqueta de texto.
+    wait(2) -- Tiempo de espera antes de eliminar la etiqueta de texto.
+    game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Donate GUI").TextLabel:Destroy() -- Eliminar la etiqueta de texto.
+end)
+
+loadstring(game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Donate GUI"))()
